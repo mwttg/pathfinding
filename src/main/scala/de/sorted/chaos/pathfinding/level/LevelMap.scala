@@ -2,6 +2,11 @@ package de.sorted.chaos.pathfinding.level
 
 import de.sorted.chaos.pathfinding.level.LevelObject._
 
+// Todo: Think about another level representation like:
+// Obstacle(position: Position, type: Type)
+//   Type = Wall, Rock, Door, Water, etc...
+// --> obstacles: Set[Obstacle] instead of grid: Vector[Vector[LevelObject]]
+
 final case class LevelMap(grid: Vector[Vector[LevelObject]]) {
   def at(position: Position): LevelObject = grid(position.y)(position.x)
 
@@ -17,7 +22,7 @@ object LevelMap {
         character match {
           case '#' => columnAccumulator :+ Wall
           case '.' => columnAccumulator :+ Space
-          case '@' => columnAccumulator :+ Space
+          case '@' => columnAccumulator :+ Player
         }
       }
       }
