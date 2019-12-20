@@ -22,7 +22,6 @@ object LevelMap {
         character match {
           case '#' => columnAccumulator :+ Wall
           case '.' => columnAccumulator :+ Space
-          case '@' => columnAccumulator :+ Player
         }
       }
       }

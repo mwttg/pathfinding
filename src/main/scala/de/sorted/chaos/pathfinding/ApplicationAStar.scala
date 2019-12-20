@@ -10,7 +10,6 @@ object ApplicationAStar {
     level(1, "level1.txt", Position(1,1), Position(15, 7))
     level(2, "level3.txt", Position(1,1), Position(79,79))
     level(3, "level3.txt", Position(1, 79), Position(79, 1))
-
   }
 
   private def level(number: Int, filename: String, start: Position, finish: Position): Unit = {
@@ -23,6 +22,5 @@ object ApplicationAStar {
     println(s"Level - $number - REVERSE")
     val reverseResult = PathFindingAStar.find(finish, start, level)
     PrettyPrint.draw(finish, start, reverseResult, level)
-
   }
 }
