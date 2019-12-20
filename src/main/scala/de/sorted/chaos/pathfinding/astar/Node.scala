@@ -34,7 +34,8 @@ final class Node(val position: Position, val gCost: Int, val hCost: Int, val par
 
   override def compare(that: Node): Int = this.cost.compare(that.cost)
 
-
+  // We omit the parent from equals and hashCode otherwise, the AStarState.next method will add every neighbour
+  // every time, because the parent changes every time ;)
   override def equals(other: Any): Boolean = other match {
     case that: Node =>
       position == that.position &&
