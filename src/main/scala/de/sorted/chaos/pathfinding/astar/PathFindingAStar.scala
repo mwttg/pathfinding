@@ -8,7 +8,7 @@ object PathFindingAStar {
   def find(start: Position, finish: Position, level: Level): List[Position] = {
     val startNode   = Node(start, 0, 0, None)
     val initState   = AStarState.init(startNode, finish)
-    val resultState = next(initState, finish, level)
+    val resultState = calculatePath(initState, finish, level)
     extractPath(resultState)
   }
 
@@ -26,7 +26,7 @@ object PathFindingAStar {
     result.reverse.map(node => node.position)
   }
 
-  def next(state: AStarState, finish: Position, level: Level): AStarState = {
+  def calculatePath(state: AStarState, finish: Position, level: Level): AStarState = {
     @tailrec
     def helper(currentState: AStarState): AStarState =
       if (currentState.now.position == finish) {
